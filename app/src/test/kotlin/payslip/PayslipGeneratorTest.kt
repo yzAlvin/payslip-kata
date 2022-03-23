@@ -39,5 +39,9 @@ class PayslipGeneratorTest() : DescribeSpec({
         it("should return payslip with gross income 12696, income tax 3667, net income 9029 when annual salary is 152,350") {
             PayslipGenerator.generate(152_350) shouldBe Payslip(12696, 3667, 9029)
         }
+
+        it("should return payslip with gross income 15000, income tax 4519, net income 10481 when annual salary is 180,000") {
+            PayslipGenerator.generate(180_000) shouldBe Payslip(15000, 4519, 10481)
+        }
     }
 })
