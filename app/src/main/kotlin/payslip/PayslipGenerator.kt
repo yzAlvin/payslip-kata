@@ -1,7 +1,10 @@
 package payslip
 
+import kotlin.math.roundToInt
+
 class PayslipGenerator {
-    fun generate(annualSalary: Int): Payslip =
-        if (annualSalary == 0) Payslip(0, 0, 0)
-        else Payslip(833, 0, 833)
+    fun generate(annualSalary: Int): Payslip {
+        val grossIncome = (annualSalary / 12.0).roundToInt()
+        return Payslip(grossIncome, 0, grossIncome)
+    }
 }
