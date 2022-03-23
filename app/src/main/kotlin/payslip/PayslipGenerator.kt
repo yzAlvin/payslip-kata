@@ -11,9 +11,13 @@ object PayslipGenerator {
     }
 
     private fun calculateMonthlyIncomeTax(annualSalary: Int): Int {
-        val monthsInYear = 12
-        return if (annualSalary <= 18_200)
-            0
-        else ((annualSalary - 18_200) * 0.19 / monthsInYear).roundToInt()
+        return when {
+            annualSalary <= 18_200 -> 0
+            annualSalary <= 37_000 -> calculateTax(annualSalary, 0, 18_200, 0.19)
+            else -> calculateTax(annualSalary, 3572, 37_000, 0.325)
+        }
     }
+
+    private fun calculateTax(annualSalary: Int, previousTax: Int, lowerBound: Int, taxRate: Double) =
+        ((previousTax + (annualSalary - lowerBound) * taxRate) / 12).roundToInt()
 }
