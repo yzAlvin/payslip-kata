@@ -3,11 +3,18 @@
  */
 package payslip
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 
 class PayslipGeneratorTest() : DescribeSpec({
     describe("Payslip generator") {
+        it("should throw illegalArgumentException when annual salary is -1") {
+            shouldThrow<IllegalArgumentException> {
+                PayslipGenerator.generate(-1)
+            }
+        }
+
         it("should return payslip with gross income 0, income tax 0, net income 0 when annual salary is 0") {
             PayslipGenerator.generate(0) shouldBe Payslip(0, 0, 0)
         }
@@ -30,6 +37,22 @@ class PayslipGeneratorTest() : DescribeSpec({
 
         it("should return payslip with gross income 3529, income tax 442, net income 3087 when annual salary is 42,345") {
             PayslipGenerator.generate(42_345) shouldBe Payslip(3529, 442, 3087)
+        }
+
+        it("should return payslip with gross income 7250, income tax 1652, net income 5598 when annual salary is 87,000") {
+            PayslipGenerator.generate(87_000) shouldBe Payslip(7250, 1652, 5598)
+        }
+
+        it("should return payslip with gross income 12696, income tax 3667, net income 9029 when annual salary is 152,350") {
+            PayslipGenerator.generate(152_350) shouldBe Payslip(12696, 3667, 9029)
+        }
+
+        it("should return payslip with gross income 15000, income tax 4519, net income 10481 when annual salary is 180,000") {
+            PayslipGenerator.generate(180_000) shouldBe Payslip(15000, 4519, 10481)
+        }
+
+        it("should return payslip with gross income 43343, income tax 17274, net income 26069 when annual salary is 520,120") {
+            PayslipGenerator.generate(520_120) shouldBe Payslip(43343, 17274, 26069)
         }
     }
 })
