@@ -14,7 +14,8 @@ object PayslipGenerator {
         return when {
             annualSalary <= 18_200 -> 0
             annualSalary <= 37_000 -> calculateTax(annualSalary, 0, 18_200, 0.19)
-            else -> calculateTax(annualSalary, 3572, 37_000, 0.325)
+            annualSalary <= 87_000 -> calculateTax(annualSalary, 3572, 37_000, 0.325)
+            else -> calculateTax(annualSalary, 19_822, 87_000, 0.37)
         }
     }
 
