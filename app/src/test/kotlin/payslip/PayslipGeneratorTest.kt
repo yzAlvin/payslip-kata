@@ -9,19 +9,19 @@ import io.kotest.matchers.shouldBe
 class PayslipGeneratorTest() : DescribeSpec({
     describe("Payslip generator") {
         it("should return payslip with gross income 0, income tax 0, net income 0 when annual salary is 0") {
-            PayslipGenerator().generate(0) shouldBe Payslip(0, 0, 0)
+            PayslipGenerator.generate(0) shouldBe Payslip(0, 0, 0)
         }
 
         it("should return payslip with gross income 833, income tax 0, net income 833 when annual salary is 10,000") {
-            PayslipGenerator().generate(10_000) shouldBe Payslip(833, 0, 833)
+            PayslipGenerator.generate(10_000) shouldBe Payslip(833, 0, 833)
         }
 
         it("should return payslip with gross income 1517, income tax 0, net income 1517 when annual salary is 18,200") {
-            PayslipGenerator().generate(18_200) shouldBe Payslip(1517, 0, 1517)
+            PayslipGenerator.generate(18_200) shouldBe Payslip(1517, 0, 1517)
         }
 
         it("should return payslip with gross income 1667, income tax 29, net income 1638 when annual salary is 20,000") {
-            PayslipGenerator().generate(20_000) shouldBe Payslip(1667, 29, 1638)
+            PayslipGenerator.generate(20_000) shouldBe Payslip(1667, 29, 1638)
         }
     }
 })
