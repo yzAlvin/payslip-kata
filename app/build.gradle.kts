@@ -29,16 +29,14 @@ dependencies {
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:30.1.1-jre")
+
+    // Kotest
+    val kotestVersion = "5.2.1"
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
 }
 
-testing {
-    suites {
-        // Configure the built-in test suite
-        val test by getting(JvmTestSuite::class) {
-            // Use Kotlin Test test framework
-            useKotlinTest()
-        }
-    }
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
 
 application {
