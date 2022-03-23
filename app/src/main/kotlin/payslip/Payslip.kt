@@ -1,4 +1,3 @@
 package payslip
 
-data class Payslip(val grossIncome: Int, val incomeTax: Int, val netIncome: Int) {
-}
+data class Payslip(val grossIncome: Int, val incomeTax: Int, val netIncome: Int)

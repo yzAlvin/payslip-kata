@@ -1,5 +1,6 @@
 package payslip
 
 class PayslipGenerator {
-    fun generate(i: Int): Any = Payslip(0, 0, 0)
+    fun generate(annualSalary: Int): Payslip = Payslip(0, 0, 0)
+
 }
